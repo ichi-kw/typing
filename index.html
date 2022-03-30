@@ -1,0 +1,51 @@
+<html>
+	<body>
+		<p id="mondai_num"></p>
+		<p id="disp"></p>
+		<input type="text" id="input" value="" autofocus>
+
+		<script>
+
+			let mondai = ["ねこ","いぬ","鬼滅の刃","にゃんこ大戦争"];
+
+			// 問題の数
+			let mondai_end_num = mondai.length;
+
+			// 正解数
+			let seikai_cnt = 0;
+
+			let mondai_num = document.getElementById('mondai_num');
+			let disp = document.getElementById('disp');
+			let input = document.getElementById('input');
+			
+			mondai_num.innerHTML = "1/" + mondai_end_num;
+			
+			disp.innerHTML = mondai[0];
+
+			input.addEventListener('keypress', function (e) {
+				
+				// Enterキー以外の場合は処理終了
+				if (e.keyCode !== 13) {
+					return false;     
+				}
+
+				if (input.value === disp.innerHTML) {
+
+					seikai_cnt++;
+
+					if (seikai_cnt === mondai_end_num){
+						alert('おわり!!!!');
+						return false; 
+					}
+					nextQ();
+				}
+			});
+			
+			function nextQ(){
+				disp.innerHTML = mondai[seikai_cnt];
+				input.value = "";
+				mondai_num.innerHTML = (seikai_cnt + 1) + "/" + mondai_end_num;
+			}
+		</script>
+	</body>
+</html>
