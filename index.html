@@ -35,6 +35,8 @@
 
 			// 問題の数
 			let mondai_end_num = mondai.length;
+			
+			let sound_seikai = new Audio("seikai.mp3");
 
 			// 正解数
 			let seikai_cnt = 0;
@@ -55,7 +57,7 @@
 				}
 
 				if (input.value === disp.innerHTML) {
-
+					sound_seikai.play();
 					seikai_cnt++;
 
 					if (seikai_cnt === mondai_end_num){
